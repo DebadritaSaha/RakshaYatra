@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RakshaPath - Your Travel Companion</title>
+    <title>RakshaPath - Home</title>
     <style>
         /* --- Google Fonts Import --- */
-        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Orelega+One&family=Poppins:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap');
 
         /* --- CSS Variables for easy theme management --- */
         :root {
             --primary-color: #FFA20F;
             --secondary-color: #5E6282;
-            --light-background: #ECF1F0;
+            --light-background: #F8F9FA;
             --dark-text: #080809;
             --light-text: #FFFFFF;
-            --font-main: 'Open Sans', sans-serif;
-            --font-accent: 'Orelega One', cursive;
-            --font-poppins: 'Poppins', sans-serif;
+            --font-main: 'Poppins', sans-serif;
         }
 
         /* --- General Body & Reset Styles --- */
@@ -31,7 +29,8 @@
             font-family: var(--font-main);
             line-height: 1.6;
             color: var(--dark-text);
-            overflow-x: hidden; /* Prevents horizontal scroll from slider */
+            background-color: #fff;
+            overflow-x: hidden;
         }
 
         .container {
@@ -48,146 +47,160 @@
         }
 
         /* ==================================
-           Header & Hero Section
+           Header
         ================================== */
-         .hero-section {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://img.freepik.com/premium-photo/panoramic-view-mountains-against-sky-sunset_1048944-7734107.jpg?w=360');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            color: var(--light-text);
-            display: flex;
-            flex-direction: column;
+        .header {
+            background-color: #fff;
+            padding: 1rem 4rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2rem 4rem;
         }
 
-        .navbar .logo img {
-            width: 250px;
-            height: auto;
+        .navbar .logo {
+            width: 180px;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 3rem;
+            gap: 2.5rem;
+            align-items: center;
         }
 
         .nav-links a {
-            color: var(--light-text);
+            color: var(--dark-text);
             text-decoration: none;
-            font-size: 20px;
-            font-weight: 600;
+            font-size: 16px;
+            font-weight: 500;
             transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
         }
-        
+
         .nav-links a:hover {
             color: var(--primary-color);
         }
-        
-        .hero-content {
-            text-align: center;
-            margin: auto;
-        }
 
-        .hero-content h1 {
-            font-family: var(--font-opensans);
-            font-size: 75px;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            text-shadow: 0px 2px 4px rgb(97, 95, 95);
-        }
-        
-        .hero-content .discover-link {
-            display: inline-block;
-            font-family: var(--font-accent);
-            font-size: 36px;
-            color: white;
+        .nav-links a.active {
             background-color: var(--primary-color);
-            padding: 0.5rem 2rem;
-            border-radius: 10px;
-            text-decoration: none;
-            margin-bottom: 2rem;
-            transform: rotate(1deg);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: white;
         }
 
-        .hero-content .discover-link:hover {
-            transform: rotate(0deg) scale(1.05);
-            box-shadow: 0 5px 15px rgb(56, 56, 56);
+        .navbar-cta {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .navbar-icon {
+            width: 28px;
+            height: 28px;
+            fill: var(--dark-text);
+            cursor: pointer;
+        }
+        
+        /* ==================================
+           Hero Section
+        ================================== */
+        .hero-section {
+            background-color: white;
+            padding: 4rem 2rem;
+            text-align: left;
+            position: relative;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.ibb.co/k3V2w2B/Screenshot-2025-09-17-115839.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 60px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
         }
 
         .btn {
             display: inline-block;
             padding: 0.8rem 2rem;
-            border-radius: 30px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
             transition: transform 0.3s, background-color 0.3s;
             text-align: center;
             border: none;
             cursor: pointer;
-            color: var(--light-text);
-            font-size: 20px;
-            font-weight: 600;
-            transition: color 0.3s;
-            background-color: orange;
         }
-        
+
         .btn:hover {
             transform: translateY(-3px);
         }
-        
+
         .btn-primary {
             background-color: var(--primary-color);
             color: var(--light-text);
             font-size: 16px;
         }
-        
-        .btn-register {
-            background-color: var(--primary-color);
+
+        .btn-dark {
+            background-color: #333;
             color: var(--light-text);
-            font-size: 20px;
+            font-size: 16px;
+        }
+        
+        .hero-image img {
+            max-width: 450px;
+            height: auto;
         }
 
         /* ==================================
-           About Us Section
+           Explore Features Section
         ================================== */
-        .about-section {
-            background-color: var(--light-background);
-            padding: 6rem 2rem;
-        }
-        
-        .about-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .about-section p {
-            font-size: 25px;
-            font-weight: 700;
-            line-height: 1.8;
-            max-width: 90%;
-            margin: 0 auto;
-            color: #0d0d0e;
-            display: table-cell;
-        }
-
-        /* ==================================
-           Features Section
-        ================================== */
-        .features-section {
+        .explore-features-section {
             padding: 6rem 0;
             text-align: center;
+            background-color: white;
         }
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
@@ -195,48 +208,100 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            background-color: #fff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
         }
         .feature-item .icon {
             width: 80px;
             height: 80px;
-            stroke: var(--primary-color);
-            stroke-width: 1.5;
+            flex-shrink: 0;
+            margin-bottom: 1.5rem;
         }
-        .feature-item h3 {
-            font-size: 28px;
-            font-weight: 700;
+        .feature-text h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .feature-text p {
+            font-size: 14px;
+            color: var(--secondary-color);
         }
 
         /* ==================================
-           Destinations Section
+           Safety Updates Section
         ================================== */
-        .destinations-section {
+        .safety-updates-section {
             padding: 6rem 0;
-            background-color: var(--light-background);
         }
-        .destinations-grid {
+        .updates-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
         }
-        .destination-card {
-            display: flex;
-            align-items: center;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.08);
+        .update-card {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             overflow: hidden;
         }
-        .destination-card img {
-            width: 200px;
-            height: 200px;
+        .update-card img {
+            width: 100%;
+            height: 220px;
             object-fit: cover;
         }
-        .destination-card-content {
+        .update-card-content {
             padding: 1.5rem;
-            font-size: 32px;
+        }
+        .update-meta {
+            font-size: 14px;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        .update-card-content h3 {
+            font-size: 18px;
             font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+            min-height: 75px;
+            font-size: 18px;
+        }
+        .update-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: var(--secondary-color);
+        }
+        .update-location, .update-comments {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .update-card-footer .icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none; /* Hide for smaller screens, can be replaced with a hamburger menu */
+            }
+        }
+        @media (max-width: 768px) {
+            h2 { font-size: 32px; }
+            .header { padding: 1rem 2rem; }
+            .hero-content { flex-direction: column; text-align: center;}
+            .hero-text h1 { font-size: 48px; }
+            .hero-buttons { justify-content: center; }
         }
 
         /* ==================================
@@ -649,83 +714,200 @@
             .footer-logo-col, .footer-links-group, .footer-social-app-col { text-align: center; }
             .social-icons, .app-buttons { justify-content: center;}
         }
-
     </style>
 </head>
 <body>
 
-    <header class="hero-section">
-        <nav class="navbar">
-            <a href="#" class="logo">
-                <img src="https://placehold.co/333x112/transparent/FFFFFF?text=RakshaPath" alt="RakshaPath Logo">
+    <header class="header">
+        <nav class="navbar container">
+            <a href="home.html" class="logo" aria-label="RakshaPath Homepage">
+                 <svg viewBox="0 0 183 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <text x="60" y="22" font-family="Open Sans, sans-serif" font-size="18" font-weight="bold" fill="#080809">RakshaPath</text>
+                    <text x="60" y="42" font-family="Open Sans, sans-serif" font-size="10" font-weight="600" fill="#5E6282">YOUR SAFE WAY</text>
+                    <path d="M25.5 2C25.5 2 48.5 2 51 2V25.5C51 38.479 39.979 49 25.5 49C11.021 49 0 38.479 0 25.5C0 12.521 25.5 2 25.5 2Z" fill="#FFA20F"/>
+                    <path d="M35.158 20.8421L26.5264 29.4737L22.2106 25.1579L13.579 26.5263L20.8422 35.1579L19.4737 42.421L26.5264 36.5263L33.579 42.421L32.2106 35.1579L39.4737 26.5263L35.158 25.1579L26.5264 16.5263L35.158 20.8421Z" fill="#080809" stroke="white" stroke-width="1.5"/>
+                </svg>
             </a>
             <ul class="nav-links">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="#">Community</a></li>
-                <li><a href="#">Blog</a></li>
+                <li><a href="home.html" class="active">Home</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Discover</a></li>
+                <li><a href="#">Assistant</a></li>
+                <li><a href="#">Report</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Admin</a></li>
             </ul>
             <div class="navbar-cta">
-                <a href="#" class="btn btn-secondary">Register Now</a>
+                 <svg class="navbar-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
             </div>
         </nav>
-        <div class="hero-content">
-            <h1>Your Imagination Is <br>Your Only Limit</h1>
-            <a href="#" class="discover-link">Discover more</a>
-        </div>
     </header>
 
     <main>
-        <section id="about" class="about-section">
-            <div class="about-content container">
-                <h2>ABOUT US</h2>
-                <p>At RakshaPath we believe that travel should be a journey of joy, discovery, and peace of mind. Our mission is to create a world where every tourist feels safe, welcomed, and confident while exploring new places.
-                    We envision building a global travel community where trust and security go hand in hand with adventure — ensuring that no traveler ever feels alone or uncertain. With honesty, care, and innovation at our core,
-                    we strive to be more than just a service — we aim to be your trusted companion on every journey.</p>
+        <section class="hero-section">
+            <div class="hero-content container">
+                <div class="hero-text">
+                    <h1>Your Travel Safety Companion<br><span>Anywhere, Anytime</span></h1>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary">Start Your Journey</a>
+                        <a href="#" class="btn btn-dark">Get Your Tourist ID</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://portoalegre.pl/wp-content/uploads/2025/04/kursy-wakacyjne-w-porto-alegre-startuja.webp" alt="Happy female tourist pointing">
+                </div>
             </div>
         </section>
 
-        <section class="features-section container">
-            <h2>Our Services</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                    <h3>Emergency SOS<br>Button</h3>
-                </div>
-                <div class="feature-item">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                    <h3>Safety<br>Alerts</h3>
-                </div>
-                <div class="feature-item">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                    <h3>24/7 Chatbot<br>Support</h3>
-                </div>
-                <div class="feature-item">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-                    <h3>Travel<br>Assistance</h3>
-                </div>
-                <div class="feature-item">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
-                    <h3>Digital<br>Identification</h3>
-                </div>
-            </div>
-        </section>
-        
-        <section class="destinations-section">
+        <section class="explore-features-section">
             <div class="container">
-                <h2>Top Destinations</h2>
-                <div class="destinations-grid">
-                    <div class="destination-card"><img src="https://tse4.mm.bing.net/th/id/OIP.qjPQvhN1lPNuIlxVE4RiUwHaE8?pid=Api&P=0&h=180" alt="Odisha"><div class="destination-card-content">Odisha</div></div>
-                    <div class="destination-card"><img src="https://static.vecteezy.com/system/resources/previews/039/218/994/non_2x/ai-generated-panoramic-window-showing-a-view-of-a-night-time-city-lit-up-with-lights-and-rainy-professionalgraphy-photo.jpg" alt="Photo of the Gateway of India in Mumbai"><div class="destination-card-content">Mumbai</div></div>
-                    <div class="destination-card"><img src="https://www.tusktravel.com/blog/wp-content/uploads/2022/02/Rajasthan-in-March.jpg" alt="Rajasthan"><div class="destination-card-content">Rajasthan</div></div>
-                    <div class="destination-card"><img src="https://tse4.mm.bing.net/th/id/OIP.HmoJ4jWx7wXDo7HcOn4bDQHaEK?pid=Api&P=0&h=180" alt="Darjeeling"><div class="destination-card-content">Darjeeling</div></div>
-                    <div class="destination-card"><img src="https://tse4.mm.bing.net/th/id/OIP.HmVXAOA6xQxqbU_fKQ737QHaEK?pid=Api&P=0&h=180" alt="Kerala"><div class="destination-card-content">Kerala</div></div>
-                    <div class="destination-card"><img src="https://tse4.mm.bing.net/th/id/OIP.4v2hshdvBsPewkEtQrdH_QHaEj?pid=Api&P=0&h=180" alt="Meghalaya"><div class="destination-card-content">Meghalaya</div></div>
+                <h2>Explore our Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <img class="icon" src="https://cdn-icons-png.freepik.com/256/17956/17956448.png" alt="Get Tourist ID">
+                        <div class="feature-text">
+                            <h3>Get Your Tourist ID</h3>
+                            <p>Start your verification process in minutes and get your secure Digital Tourist Card.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <img class="icon" src="https://mbm-book.com/wp-content/uploads/elementor/thumbs/compass-1-pn18zgkbj9ovcfds2yn9li2c1p9xdanjd117bltcv0.png" alt="Discover Nearby Services">
+                        <div class="feature-text">
+                            <h3>Discover Nearby Services</h3>
+                            <p>Find hospitals, police stations, ATMs, and safe tourist zones instantly.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <img class="icon" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRryHsVnf7FAC_LRTSjpHbos7QCYytKs2ylK8b01Qg9eVoYnW5T" alt="Ask SafarBot">
+                        <div class="feature-text">
+                            <h3>Ask SafarBot (AI Assistant)</h3>
+                            <p>Need help anytime? Chat with our AI for safety tips, local info, emergency contacts, or travel guidance.</p>
+                        </div>
+                    </div>
+                     <div class="feature-item">
+                        <img class="icon" src="https://images.squarespace-cdn.com/content/v1/61153a53a79dc8150463b9d0/1632596441151-1N9LC16N4ZBX9TU0W5D2/HomeRun-services-reports.png" alt="Report an Incident">
+                        <div class="feature-text">
+                            <h3>Report an Incident</h3>
+                            <p>Faced a problem? Report theft, fraud, or safety concerns through the app and get instant support.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="best-places-section">
+<section class="safety-updates-section">
+            <div class="container">
+                 <h2>Current Safety Updates Near You</h2>
+                 <div class="updates-grid">
+                     <div class="update-card">
+                         <img src="https://static.india.com/wp-content/uploads/2022/08/bengaluru-rain-4.jpg" alt="Heavy rainfall">
+                         <div class="update-card-content">
+                             <div class="update-meta">September 16, 2025 - Tips & Tricks</div>
+                             <h3>Heavy rainfall has caused waterlogging in several parts of the city.</h3>
+                             <div class="update-card-footer">
+                                 <div class="update-location">
+                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                     <span>Bangalore</span>
+                                 </div>
+                                 <div class="update-comments">
+                                      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                     <span>Comment (25)</span>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="update-card">
+                        <img src="https://arunachalobserver.org/wp-content/uploads/2022/05/cyclone-Fani-and-Amphen.jpg" alt="Cyclone warning">
+                         <div class="update-card-content">
+                             <div class="update-meta">March 10, 2025 - Tips & Tricks</div>
+                             <h3>Cyclone warning issued along the east coast. Tourists are advised to stay indoors.</h3>
+                             <div class="update-card-footer">
+                                 <div class="update-location">
+                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                     <span>Odisha</span>
+                                 </div>
+                                 <div class="update-comments">
+                                      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                     <span>Comment (15)</span>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="update-card">
+                         <img src="https://sarasotamits.com/wp-content/uploads/2021/01/istockphoto-862073406-170667a.jpg" alt="Heatwave alert">
+                         <div class="update-card-content">
+                             <div class="update-meta">july 16, 2025 - Tips & Tricks</div>
+                             <h3>Heatwave alert with temperatures crossing 45°C. Stay hydrated!</h3>
+                             <div class="update-card-footer">
+                                 <div class="update-location">
+                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                     <span>Rajasthan</span>
+                                 </div>
+                                 <div class="update-comments">
+                                      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                     <span>Comment (13)</span>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="update-card">
+                        <img src="https://www.hindustantimes.com/ht-img/img/2025/05/31/1600x900/The-India-Meteorological-Department--IMD--issued-a_1748691683221.jpg" alt="Public demonstrations">
+                        <div class="update-card-content">
+                            <div class="update-meta">September 06, 2025 - Tips & Tricks</div>
+                            <h3>10 killed in landslides, flash floods; families hit in Upper Subansiri</h3>
+                            <div class="update-card-footer">
+                                <div class="update-location">
+                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                    <span>Arunachal Pradesh</span>
+                                </div>
+                                <div class="update-comments">
+                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                    <span>Comment (25)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="update-card">
+                        <img src="https://english.cdn.zeenews.com/sites/default/files/styles/zm_500x286/public/2017/06/21/604157-dengue.jpg" alt="Health advisory">
+                        <div class="update-card-content">
+                            <div class="update-meta">September 16, 2018 - Tips & Tricks</div>
+                            <h3>Health advisory issued due to rising dengue cases. Use mosquito repellent.</h3>
+                            <div class="update-card-footer">
+                                <div class="update-location">
+                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                    <span>Kerala</span>
+                                </div>
+                                <div class="update-comments">
+                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                    <span>Comment (15)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="update-card">
+                        <img src="https://nomadicweekends.com/blog/wp-content/uploads/2019/03/Darjeeling-Weather-And-Temperature-Everything-That-You-Ever-Wanted-To-Know.jpg" alt="Darjeeling-Fog">
+                        <div class="update-card-content">
+                            <div class="update-meta">September 16, 2025 - Tips & Tricks</div>
+                            <h3>Darjeeling calls for a fog/mist in the morning.</h3>
+                            <div class="update-card-footer">
+                                <div class="update-location">
+                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                    <span>Darjeeling</span>
+                                </div>
+                                <div class="update-comments">
+                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                    <span>Comment (10)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <section class="best-places-section">
             <div class="best-places-content container">
                 <h2>Best Places For You</h2>
                 <div class="filter-buttons">
@@ -829,16 +1011,16 @@
                 <h2>What People Say About Us</h2>
                 <div class="testimonial-slider">
                     <div class="testimonial-slide side">
-                        <img src="https://placehold.co/825x446/E0E0E0/fff" alt="Previous testimonial background" class="main-img">
-                    </div>
-                    <div class="testimonial-slide active">
-                        <img src="https://chalohoppo.com/wp-content/uploads/2023/03/Web-Banner.jpg" alt="Current testimonial background" class="main-img">
-                        <div class="testimonial-card">
-                            <img src="https://j5u8f2v8.delivery.rocketcdn.me/wp-content/uploads/images/professional-hispanic-woman-headshot-Mna.jpeg" alt="Profile picture of Jeo Stanlee" class="profile-img">
-                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"</p>
-                            <div class="name">- Jeo Stanlee</div>
-                        </div>
-                    </div>
+                     <img src="https://placehold.co/825x446/E0E0E0/fff" alt="Previous testimonial background" class="main-img">
+                                    </div>
+                                <div class="testimonial-slide active">
+                                    <img src="https://chalohoppo.com/wp-content/uploads/2023/03/Web-Banner.jpg" alt="Current testimonial background" class="main-img">
+                                    <div class="testimonial-card">
+                                        <img src="https://j5u8f2v8.delivery.rocketcdn.me/wp-content/uploads/images/professional-hispanic-woman-headshot-Mna.jpeg" alt="Profile picture of Jeo Stanlee" class="profile-img">
+                                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"</p>
+                                    <div class="name">- Jeo Stanlee</div>
+                                </div>
+                            </div>
                     <div class="testimonial-slide side">
                         <img src="https://placehold.co/825x446/E0E0E0/fff" alt="Next testimonial background" class="main-img">
                     </div>
