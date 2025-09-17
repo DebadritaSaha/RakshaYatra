@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RakshaPath - Profile</title>
+    <style>
+        /* --- Google Fonts Import --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        /* --- CSS Variables for easy theme management --- */
+        :root {
+            --primary-color: #FFA20F;
+            --secondary-color: #5E6282;
+            --light-background: #F8F9FA;
+            --dark-text: #080809;
+            --light-text: #FFFFFF;
+            --font-main: 'Poppins', sans-serif;
+            --border-color: #E7E7E7;
+        }
+
+        /* --- General Body & Reset Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-background);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* ==================================
+           Header
+        ================================== */
+        .header {
+            background-color: #fff;
+            padding: 1rem 4rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            width: auto;
+            height: 40px;
+        }
+        .navbar .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* ==================================
+           Profile Page Layout
+        ================================== */
+        .profile-page {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .profile-sidebar {
+            flex: 1;
+            max-width: 350px;
+        }
+
+        .profile-main {
+            flex: 3;
+        }
+        
+        /* ==================================
+           User Card
+        ================================== */
+        .user-card, .tourist-id-card {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+        }
+
+        .user-card {
+            text-align: center;
+        }
+        
+        .user-card .profile-picture {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .user-card h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .user-card .location {
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+        }
+
+        .user-info-list {
+            list-style: none;
+            text-align: left;
+        }
+        .user-info-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--secondary-color);
+        }
+        .user-info-list li:last-child {
+            border-bottom: none;
+        }
+        .user-info-list .icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--secondary-color);
+        }
+
+        /* ==================================
+           Tourist ID Card
+        ================================== */
+        .tourist-id-card {
+            margin-top: 2rem;
+        }
+        .tourist-id-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .tourist-id-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .verified-badge {
+            background-color: #EBF9F1;
+            color: #2D8A5B;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .qr-code {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+        .id-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .btn-id {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid var(--primary-color);
+        }
+        .btn-id.view {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .btn-id.download {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        .btn-id .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ==================================
+           Personal Information Form
+        ================================== */
+        .personal-info-card {
+            background-color: #fff;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+        }
+        .personal-info-card h2 {
+            text-align: left;
+            font-size: 28px;
+            margin-bottom: 2rem;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        .form-group input, .form-group select {
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: var(--font-main);
+        }
+        .phone-group {
+            display: flex;
+        }
+        .phone-group select {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-right: none;
+            flex: 0 0 120px;
+            background-color: #f9f9f9;
+        }
+        .phone-group input {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            flex-grow: 1;
+        }
+        .password-wrapper {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: white;
+        }
+        .password-wrapper input {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+        }
+        #togglePassword {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0 1rem;
+        }
+        #togglePassword svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--secondary-color);
+        }
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        .btn-save {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 1rem;
+            width: 200px;
+            transition: background-color 0.3s;
+        }
+        .btn-save:hover {
+            background-color: #E5920E;
+        }
+        
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .profile-page {
+                flex-direction: column;
+            }
+            .profile-sidebar {
+                max-width: 100%;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+             .nav-links {
+                display: none;
+            }
+        }
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar container">
+            <a href="home.html" class="logo" aria-label="RakshaPath Homepage">
+                 <img src="https://i.ibb.co/p338bYn/Screenshot-2025-09-17-163044.png" alt="RakshaPath Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="index.html">Discover</a></li>
+                <li><a href="#">Assistant</a></li>
+                <li><a href="#">Report</a></li>
+                <li><a href="profile.html" class="active">Profile</a></li>
+                <li><a href="#">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="profile-page container">
+        <aside class="profile-sidebar">
+            <div class="user-card">
+                <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Yash Ghori" class="profile-picture">
+                <h2>Yash Ghori</h2>
+                <p class="location">Kolkata,West Bengal, India</p>
+                <ul class="user-info-list">
+                    <li><svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2m0 10c2.7 0 5.8 1.29 6 2H6c.23-.72 3.31-2 6-2m0-12C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 10c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> <span>Student</span></li>
+                    <li><svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16.5 12c1.38 0 2.5-1.12 2.5-2.5S17.88 7 16.5 7C15.12 7 14 8.12 14 9.5s1.12 2.5 2.5 2.5zM9 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm7.5 3c-1.83 0-5.5.92-5.5 2.75V19h11v-2.25c0-1.83-3.67-2.75-5.5-2.75zM9 13c-2.33 0-7 1.17-7 3.5V19h7v-2.25c0-.85.33-2.34 2.37-3.47C10.5 13.1 9.66 13 9 13z"/></svg> <span>on-teak</span></li>
+                    <li><svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.5 12.2c-.3-.2-.5-.5-.6-.9s-.1-1 .2-1.4c.3-.4.7-.6 1.2-.6.5 0 .9.2 1.2.6.3.4.4.9.2 1.4-.1.4-.3.7-.6.9-.3.2-.6.3-1 .3s-.7-.1-1-.3zm-9 0c-.3-.2-.5-.5-.6-.9s-.1-1 .2-1.4c.3-.4.7-.6 1.2-.6.5 0 .9.2 1.2.6.3.4.4.9.2 1.4-.1.4-.3.7-.6.9-.3.2-.6.3-1 .3s-.7-.1-1-.3zm4.5-4.2c1.4 0 2.5 1.1 2.5 2.5s-1.1 2.5-2.5 2.5-2.5-1.1-2.5-2.5 1.1-2.5 2.5-2.5z"/></svg> <span>+91 (000) 000-0000</span></li>
+                    <li><svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg> <span>yghori@asite.com</span></li>
+                    <li><svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z"/></svg> <span>PDT-1</span></li>
+                </ul>
+            </div>
+            <div class="tourist-id-card">
+                <div class="tourist-id-header">
+                    <h3>Tourist ID</h3>
+                    <span class="verified-badge">Verified</span>
+                </div>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=RakshaPath-YashGhori-PDT1" alt="QR Code for Tourist ID" class="qr-code">
+                <div class="id-buttons">
+                    <a href="#" class="btn-id view">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5C21.27 7.61 17 4.5 12 4.5zm0 12c-2.48 0-4.5-2.02-4.5-4.5s2.02-4.5 4.5-4.5 4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5zm0-7c-1.38 0-2.5 1.12-2.5 2.5s1.12 2.5 2.5 2.5 2.5-1.12 2.5-2.5-1.12-2.5-2.5-2.5z"/></svg>
+                        View ID
+                    </a>
+                    <a href="#" class="btn-id download">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFA20F"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5v-2z"/></svg>
+                        Download
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="profile-main">
+            <div class="personal-info-card">
+                <h2>Personal Information</h2>
+                <form class="form-grid">
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" value="Yash">
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" value="Ghori">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" value="yghori@asite.com">
+                    </div>
+                     <div class="form-group full-width">
+                        <label for="password">Password</label>
+                         <div class="password-wrapper">
+                            <input type="password" id="password" value="fakepassword123">
+                            <button type="button" id="togglePassword" aria-label="Toggle password visibility">
+                                <svg id="eye-icon" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5C21.27 7.61 17 4.5 12 4.5zm0 12c-2.48 0-4.5-2.02-4.5-4.5S9.52 7.5 12 7.5s4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5zm0-7c-1.38 0-2.5 1.12-2.5 2.5s1.12 2.5 2.5 2.5 2.5-1.12 2.5-2.5-1.12-2.5-2.5-2.5z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <div class="phone-group">
+                            <select aria-label="Country code for phone number">
+                                <option value="IN">🇮🇳 +91</option>
+                                <option value="US">🇺🇸 +1</option>
+                                <option value="CN">🇨🇳 +86</option>
+                                <option value="KR">🇰🇷 +82</option>
+                            </select>
+                            <input type="tel" placeholder="000 000 0000">
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label>Emergency Phone Number</label>
+                        <div class="phone-group">
+                           <select aria-label="Country code for emergency phone number">
+                                <option value="IN">🇮🇳 +91</option>
+                                <option value="US">🇺🇸 +1</option>
+                                <option value="CN">🇨🇳 +86</option>
+                                <option value="KR">🇰🇷 +82</option>
+                            </select>
+                            <input type="tel" placeholder="000 000 0000">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="language">Preferred Language</label>
+                        <select id="language">
+                            <option>English</option>
+                            <option>Hindi</option>
+                            <option>Bengali</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="nationality">Nationality</label>
+                        <select id="nationality">
+                            <option>India</option>
+                            <option>United States</option>
+                            <option>China</option>
+                            <option>South Korea</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn-save">Save</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const togglePassword = document.querySelector('#togglePassword');
+            const password = document.querySelector('#password');
+            const eyeIcon = document.querySelector('#eye-icon');
+
+            const eyeIconPath = "M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5C21.27 7.61 17 4.5 12 4.5zm0 12c-2.48 0-4.5-2.02-4.5-4.5S9.52 7.5 12 7.5s4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5zm0-7c-1.38 0-2.5 1.12-2.5 2.5s1.12 2.5 2.5 2.5 2.5-1.12 2.5-2.5-1.12-2.5-2.5-2.5z";
+            const eyeSlashIconPath = "M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75C21.27 7.11 17 4.5 12 4.5c-1.77 0-3.39.53-4.79 1.4L8.83 7.52C9.82 7.19 10.87 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.52 9.83L9.17 11.5c-.16.15-.31.32-.47.5C8.24 12.87 8 13.89 8 15c0 2.21 1.79 4 4 4 .71 0 1.36-.18 1.94-.5l1.55 1.55c-.67.33-1.41.53-2.21.53-2.76 0-5-2.24-5-5 0-1.19.41-2.27 1.11-3.14l1.41 1.41z";
+
+            togglePassword.addEventListener('click', function (e) {
+                // toggle the type attribute
+                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                password.setAttribute('type', type);
+                // toggle the icon
+                const path = eyeIcon.querySelector('path');
+                path.setAttribute('d', type === 'password' ? eyeIconPath : eyeSlashIconPath);
+            });
+        });
+    </script>
+    
+</body>
+</html>
