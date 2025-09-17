@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RakshaPath - Your Travel Companion</title>
+    <style>
+        /* --- Google Fonts Import --- */
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Orelega+One&family=Poppins:wght@400;600&display=swap');
+
+        /* --- CSS Variables for easy theme management --- */
+        :root {
+            --primary-color: #FFA20F;
+            --secondary-color: #5E6282;
+            --light-background: #ECF1F0;
+            --dark-text: #080809;
+            --light-text: #FFFFFF;
+            --font-main: 'Open Sans', sans-serif;
+            --font-accent: 'Orelega One', cursive;
+            --font-poppins: 'Poppins', sans-serif;
+        }
+
+        /* --- General Body & Reset Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--dark-text);
+            overflow-x: hidden; /* Prevents horizontal scroll from slider */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        h2 {
+            font-size: 40px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* ==================================
+           Header & Hero Section
+        ================================== */
+        .hero-section {
+            background-image:linear-gradient(rgba(232, 227, 227, 0.5), rgba(0, 0, 0, 0.5)),  url('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSACzOF2yVO5VqHfIaTairA7_3DGQAs9tAdPTSSDgF2ITfeF0vt');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: var(--light-text);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+        }
+
+        .navbar .logo img {
+            width: 250px;
+            height: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .navbar-cta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .navbar-icon {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, background-color 0.3s;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            font-size: 24px;
+        }
+        
+        .btn-secondary {
+            background-color: rgba(255, 162, 15, 0.80);
+            color: var(--light-text);
+            font-size: 20px;
+        }
+        
+        .btn-subscribe {
+            padding: 1rem 3rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero-content {
+            text-align: center;
+            margin: auto;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-main);
+            font-size: 75px;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-content .discover-link {
+            display: inline-block;
+            font-family: var(--font-accent);
+            font-size: 36px;
+            color: var(--light-text);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transform: rotate(1deg);
+        }
+
+        /* ==================================
+           About Us Section
+        ================================== */
+        .about-section {
+            background-color: var(--light-background);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .about-section p {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.8;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        /* ==================================
+           Features Section
+        ================================== */
+        .features-section {
+            padding: 6rem 0;
+            text-align: center;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        .feature-item .icon {
+            width: 80px;
+            height: 80px;
+            stroke: var(--primary-color);
+            stroke-width: 1.5;
+        }
+        .feature-item h3 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        /* ==================================
+           Destinations Section
+        ================================== */
+        .destinations-section {
+            padding: 6rem 0;
+            background-color: var(--light-background);
+        }
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+        }
+        .destination-card {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+        .destination-card img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+        .destination-card-content {
+            padding: 1.5rem;
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        /* ==================================
+           Best Places Section
+        ================================== */
+        .best-places-section {
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--light-background);
+        }
+        .best-places-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background-image: url('https://tse3.mm.bing.net/th/id/OIP.HJqh49J-B-1iCZhYyE_6WQHaDr?pid=Api&P=0&h=180');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.50;
+            z-index: 1;
+        }
+        .best-places-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .filter-btn {
+            color: var(--dark-text);
+            font-size: 18px;
+            font-weight: 600;
+            background-color: #D1D5DB; /* Grey */
+            padding: 0.75rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .filter-btn:hover {
+             background-color: var(--primary-color);
+             color: white;
+        }
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            text-align: left;
+        }
+        .place-card {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .place-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .place-card-content {
+            padding: 1.5rem;
+        }
+        .place-card-content p {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            min-height: 70px; /* Ensures consistent card height */
+        }
+        .place-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .location .icon {
+            width: 20px;
+            height: 20px;
+            stroke: var(--secondary-color);
+        }
+        .place-card-footer a {
+            font-weight: 600;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .section-cta {
+            margin-top: 4rem;
+        }
+
+
+        /* ==================================
+           How It Works Section
+        ================================== */
+        .how-it-works-section {
+            padding: 6rem 0;
+        }
+        .how-it-works-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+        .steps {
+            max-width: 550px;
+        }
+        .steps-header {
+            text-align: left;
+        }
+        .steps-header p {
+            font-size: 24px;
+        }
+        .steps-header h2 {
+            text-align: left;
+            font-size: 40px;
+            margin-bottom: 2rem;
+        }
+        .step {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .step-icon {
+            flex-shrink: 0;
+            width: 65px;
+            height: 65px;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .step-icon .icon {
+            width: 40px;
+            height: 40px;
+            stroke: white;
+        }
+        .step-icon--register { background-color: #F0BB1F; }
+        .step-icon--verify   { background-color: #F15A2B; }
+        .step-icon--get-id  { background-color: #006380; }
+
+        .step h3 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+        .step p {
+            color: var(--secondary-color);
+        }
+        .main-image img {
+            max-width: 434px;
+            border-radius: 15px;
+            height: auto;
+        }
+        
+        /* ==================================
+           Testimonials Section
+        ================================== */
+        .testimonials-section {
+            padding: 6rem 0;
+            background-color: var(--light-background);
+            text-align: center;
+        }
+        .testimonial-slider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .testimonial-slide {
+            position: relative;
+        }
+        .testimonial-slide img.main-img {
+            border-radius: 20px;
+            transition: transform 0.3s, opacity 0.3s;
+            width: 1200px;
+        }
+
+        .testimonial-slide.side {
+            transform: scale(0.8);
+            opacity: 0.5;
+        }
+        .testimonial-card {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 738px;
+            background: white;
+            box-shadow: 0px 4px 59px 9px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .testimonial-slide.active .testimonial-card {
+            opacity: 1;
+        }
+        .testimonial-card img.profile-img {
+            position: absolute;
+            top: -74px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 148px;
+            height: 148px;
+            border-radius: 50%;
+            border: 5px solid var(--light-background);
+            object-fit: cover;
+        }
+        .testimonial-card p {
+            margin-top: 4rem;
+            font-family: var(--font-poppins);
+            font-size: 20px;
+        }
+        .testimonial-card .name {
+            font-family: var(--font-poppins);
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        /* ==================================
+           Subscription Section
+        ================================== */
+        .subscribe-section {
+            padding: 6rem 2rem;
+            margin: 8rem 2rem;
+            position: relative;
+            text-align: center;
+            border-radius: 20px 129px 20px 20px;
+            background-color: rgba(153, 255, 236, 0.2);
+            overflow: hidden;
+        }
+        .subscribe-section h2 {
+            font-size: 33px;
+            line-height: 54px;
+            color: var(--secondary-color);
+        }
+        .subscribe-form {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .email-input-wrapper {
+            position: relative;
+        }
+        .email-input-wrapper .icon {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            stroke: #999;
+        }
+        .email-input-wrapper input {
+            width: 420px;
+            height: 68px;
+            border-radius: 10px;
+            border: none;
+            padding-left: 65px;
+            font-size: 16px;
+        }
+        
+        /* ==================================
+           Footer
+        ================================== */
+        .site-footer {
+            padding: 6rem 4rem 2rem;
+            color: var(--secondary-color);
+            background-color: white;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .footer-logo-col {
+            flex: 1.5;
+            min-width: 200px;
+        }
+        .footer-logo-col .logo {
+            width: 180px;
+            height: auto;
+        }
+        .footer-links-group {
+            display: flex;
+            gap: 5rem;
+            flex: 3;
+            justify-content: center;
+        }
+        .footer-social-app-col {
+            flex: 1.5;
+            min-width: 250px;
+            text-align: left;
+        }
+        .footer-links h3, .footer-social-app-col h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1.5rem;
+        }
+        .footer-links ul {
+            list-style: none;
+        }
+        .footer-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            line-height: 2.5;
+            font-size: 16px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .social-icon-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .social-icon-link .icon {
+            width: 24px;
+            height: 24px;
+            stroke: var(--dark-text);
+            fill: none;
+        }
+        .social-icon-link--instagram {
+            background: conic-gradient(from 180deg at 50% 50%, #B8D2F1 0deg, #F289AA 60deg, #C68BF0 106deg, #D164DA 154deg, #C963E8 221deg, #BFC2E8 259deg, #FFC999 289deg, #D0D8C9 315deg, #BAD0F1 334deg, #CED8CB 359deg, rgba(255, 255, 255, 0) 360deg);
+        }
+        .social-icon-link--instagram .icon {
+            stroke: none;
+            fill: white;
+        }
+        .footer-social-app-col h3.app-title {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--secondary-color);
+        }
+        .app-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .app-buttons img {
+            height: 45px;
+            width: auto;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            color: var(--secondary-color);
+            font-size: 14px;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .footer-links-group {
+                justify-content: flex-start;
+                gap: 2rem;
+            }
+        }
+        @media (max-width: 768px) {
+            h2 { font-size: 32px; }
+            .navbar { flex-direction: column; gap: 1.5rem; }
+            .hero-content h1 { font-size: 48px; }
+            .about-section p { font-size: 20px; }
+            .destinations-grid { grid-template-columns: 1fr; }
+            .places-grid { grid-template-columns: 1fr; }
+            .how-it-works-content { flex-direction: column; }
+            .testimonial-slider { flex-direction: column; }
+            .testimonial-slide.side { display: none; }
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-logo-col, .footer-links-group, .footer-social-app-col { text-align: center; }
+            .social-icons, .app-buttons { justify-content: center;}
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="hero-section">
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <img src="https://placehold.co/333x112/transparent/FFFFFF?text=RakshaPath" alt="RakshaPath Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+            <div class="navbar-cta">
+                 <svg class="navbar-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg>
+                <a href="#" class="btn btn-secondary">Register Now</a>
+            </div>
+        </nav>
+        <div class="hero-content">
+            <h1>Your Imagination Is <br>Your Only Limit</h1>
+            <a href="#" class="discover-link">Discover more</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="about-section">
+            <div class="about-content container">
+                <h2>ABOUT US</h2>
+                <p>At RakshaPath we believe that travel should be a journey of joy, discovery, and peace of mind. Our mission is to create a world where every tourist feels safe, welcomed, and confident while exploring new places.</p>
+            </div>
+        </section>
+
+        <section class="features-section container">
+            <h2>Our Services</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    <h3>Emergency SOS<br>Button</h3>
+                </div>
+                <div class="feature-item">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <h3>Safety<br>Alerts</h3>
+                </div>
+                <div class="feature-item">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    <h3>24/7 Chatbot<br>Support</h3>
+                </div>
+                <div class="feature-item">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                    <h3>Travel<br>Assistance</h3>
+                </div>
+                <div class="feature-item">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                    <h3>Digital<br>Identification</h3>
+                </div>
+            </div>
+        </section>
+        
+        <section class="destinations-section">
+            <div class="container">
+                <h2>Top Destinations</h2>
+                <div class="destinations-grid">
+                    <div class="destination-card"><img src="https://tse4.mm.bing.net/th/id/OIP.qjPQvhN1lPNuIlxVE4RiUwHaE8?pid=Api&P=0&h=180" alt="Odisha"><div class="destination-card-content">Odisha</div></div>
+                    <div class="destination-card"><img src="https://static.vecteezy.com/system/resources/previews/039/218/994/non_2x/ai-generated-panoramic-window-showing-a-view-of-a-night-time-city-lit-up-with-lights-and-rainy-professionalgraphy-photo.jpg" alt="Photo of the Gateway of India in Mumbai"><div class="destination-card-content">Mumbai</div></div>
+                    <div class="destination-card"><img src="https://www.tusktravel.com/blog/wp-content/uploads/2022/02/Rajasthan-in-March.jpg" alt="Rajasthan"><div class="destination-card-content">Rajasthan</div></div>
+                    <div class="destination-card"><img src="https://tse4.mm.bing.net/th/id/OIP.HmoJ4jWx7wXDo7HcOn4bDQHaEK?pid=Api&P=0&h=180" alt="Darjeeling"><div class="destination-card-content">Darjeeling</div></div>
+                    <div class="destination-card"><img src="https://tse4.mm.bing.net/th/id/OIP.HmVXAOA6xQxqbU_fKQ737QHaEK?pid=Api&P=0&h=180" alt="Kerala"><div class="destination-card-content">Kerala</div></div>
+                    <div class="destination-card"><img src="https://tse4.mm.bing.net/th/id/OIP.4v2hshdvBsPewkEtQrdH_QHaEj?pid=Api&P=0&h=180" alt="Meghalaya"><div class="destination-card-content">Meghalaya</div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="best-places-section">
+            <div class="best-places-content container">
+                <h2>Best Places For You</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn">Coastal</button>
+                    <button class="filter-btn">Mountains</button>
+                    <button class="filter-btn">Heritage</button>
+                    <button class="filter-btn">Wildlife</button>
+                    <button class="filter-btn">Spiritual</button>
+                    <button class="filter-btn">More</button>
+                </div>
+                <div class="places-grid">
+                    <div class="place-card">
+                        <img src="https://images.unsplash.com/photo-1615894566342-c4187d2779c0?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEzfHx8ZW58MHx8fHx8" alt="Goa">
+                        <div class="place-card-content">
+                            <p>From peaceful sunsets at Palolem to lively parties at Baga, Goa offers something for every traveler.</p>
+                            <div class="place-card-footer">
+                                <div class="location">
+                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                    <span>Goa</span>
+                                </div>
+                                <a href="#">Know More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="place-card">
+                        <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Kerala">
+                        <div class="place-card-content">
+                             <p>Kerala’s coastline is dotted famous for its lighthouse views, stunning cliffs and Ayurvedic retreats.</p>
+                             <div class="place-card-footer">
+                                 <div class="location">
+                                      <svg class="icon" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                     <span>Kerala</span>
+                                 </div>
+                                 <a href="#">Know More</a>
+                             </div>
+                        </div>
+                    </div>
+                    <div class="place-card">
+                        <img src="https://www.alphonsostories.com/AlphonSoStoriesImages/BlogImage/Pondicherry--The-Yellow-City-lg-cov.jpg" alt="Pondicherry">
+                        <div class="place-card-content">
+                             <p>Offers a unique vibe with its architecture, clean beaches, and calm seaside promenades.</p>
+                             <div class="place-card-footer">
+                                 <div class="location">
+                                      <svg class="icon" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                     <span>Pondicherry</span>
+                                 </div>
+                                 <a href="#">Know More</a>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-cta">
+                    <a href="#" class="btn btn-primary">Discover More</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works-section container">
+            <div class="how-it-works-content">
+                <div class="steps">
+                    <div class="steps-header">
+                        <p>Easy and Fast</p>
+                        <h2>Tourist ID generation in 3 easy steps</h2>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon step-icon--register">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg>
+                        </div>
+                        <div class="step-text">
+                            <h3>Register</h3>
+                            <p>Sign up with your basic details (name, nationality, passport/ID number, contact info).</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon step-icon--verify">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <div class="step-text">
+                            <h3>Verify</h3>
+                            <p>Upload your valid identity document and let our system verify it securely.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon step-icon--get-id">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path><polyline points="7 11 12 16 17 11"></polyline><line x1="12" y1="4" x2="12" y2="16"></line></svg>
+                        </div>
+                        <div class="step-text">
+                            <h3>Get Your Tourist ID</h3>
+                            <p>Download your digital Tourist Verification Card with a unique QR code.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-image">
+                    <img src="https://www.pintuna.com/wp-content/uploads/2023/09/scan-me@1x.png" alt="Happy Traveler">
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials-section">
+            <div class="container">
+                <h2>What People Say About Us</h2>
+                <div class="testimonial-slider">
+                    <div class="testimonial-slide side">
+                        <img src="https://placehold.co/825x446/E0E0E0/fff" alt="Previous testimonial background" class="main-img">
+                    </div>
+                    <div class="testimonial-slide active">
+                        <img src="https://chalohoppo.com/wp-content/uploads/2023/03/Web-Banner.jpg" alt="Current testimonial background" class="main-img">
+                        <div class="testimonial-card">
+                            <img src="https://j5u8f2v8.delivery.rocketcdn.me/wp-content/uploads/images/professional-hispanic-woman-headshot-Mna.jpeg" alt="Profile picture of Jeo Stanlee" class="profile-img">
+                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"</p>
+                            <div class="name">- Jeo Stanlee</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide side">
+                        <img src="https://placehold.co/825x446/E0E0E0/fff" alt="Next testimonial background" class="main-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="subscribe-section">
+            <div class="container">
+                <h2>Subscribe to get information, latest news and other<br/>interesting offers about RakshaPath</h2>
+                <form class="subscribe-form">
+                    <div class="email-input-wrapper">
+                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <input type="email" placeholder="Your email">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-subscribe">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo-col">
+                     <svg class="logo" viewBox="0 0 183 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <text x="60" y="22" font-family="Open Sans, sans-serif" font-size="18" font-weight="bold" fill="#080809">RakshaPath</text>
+                        <text x="60" y="42" font-family="Open Sans, sans-serif" font-size="10" font-weight="600" fill="#5E6282">YOUR SAFE WAY</text>
+                        <path d="M25.5 2C25.5 2 48.5 2 51 2V25.5C51 38.479 39.979 49 25.5 49C11.021 49 0 38.479 0 25.5C0 12.521 25.5 2 25.5 2Z" fill="#FFA20F"/>
+                        <path d="M35.158 20.8421L26.5264 29.4737L22.2106 25.1579L13.579 26.5263L20.8422 35.1579L19.4737 42.421L26.5264 36.5263L33.579 42.421L32.2106 35.1579L39.4737 26.5263L35.158 25.1579L26.5264 16.5263L35.158 20.8421Z" fill="#080809" stroke="white" stroke-width="1.5"/>
+                    </svg>
+                </div>
+
+                <div class="footer-links-group">
+                    <div class="footer-links">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Mobile</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links">
+                        <h3>Contact</h3>
+                        <ul>
+                            <li><a href="#">Help/FAQ</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="#">Affiliates</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links">
+                        <h3>More</h3>
+                        <ul>
+                            <li><a href="#">Airline Fees</a></li>
+                            <li><a href="#">Airline</a></li>
+                            <li><a href="#">Low Fare Tips</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-social-app-col">
+                    <div class="social-icons">
+                        <a href="#" class="social-icon-link" aria-label="Facebook"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                        <a href="#" class="social-icon-link social-icon-link--instagram" aria-label="Instagram"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="white" stroke-width="2"></line></svg></a>
+                        <a href="#" class="social-icon-link" aria-label="Twitter"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+                    </div>
+                    <div class="footer-app">
+                        <h3 class="app-title">Discover our app</h3>
+                        <div class="app-buttons">
+                            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Google_Play_2022_logo.svg/768px-Google_Play_2022_logo.svg.png?20220726170516" alt="Get it on Google Play"></a>
+                            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Apple_Store.png" alt="Download on the App Store"></a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>All rights reserved@travelgoo.ca</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+
+                        
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RakshaPath. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
